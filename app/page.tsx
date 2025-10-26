@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Diamond as Discord } from "lucide-react"
+import { MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
@@ -64,7 +64,7 @@ export default function Home() {
         </div>
 
         {/* Bubble Navigation */}
-        <div className="fixed left-1/2 transform -translate-x-1/2 top-12 z-50 pointer-events-auto">
+        <div className="hidden md:block fixed left-1/2 transform -translate-x-1/2 top-12 z-50 pointer-events-auto">
           <div className="flex items-center justify-center gap-6 bg-purple-600/10 border border-purple-500/30 rounded-full px-8 py-4 backdrop-blur-sm animate-slideIn">
             <button
               onClick={scrollToTop}
@@ -112,19 +112,78 @@ export default function Home() {
               <Link href="/whitelist" className="hover:text-purple-300 transition-colors duration-300">
                 Whitelist
               </Link>
-              {/* Removed Statistics link */}
               <span className="text-slate-600">|</span>
               <Link href="/team" className="hover:text-purple-300 transition-colors duration-300">
                 Tým
               </Link>
             </div>
             <div className="h-6 w-px bg-slate-600"></div>
-            {/* Removed Login button */}
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        <div className="md:hidden fixed top-12 left-0 right-0 z-50 px-4">
+          <div className="bg-purple-600/10 border border-purple-500/30 rounded-2xl backdrop-blur-sm p-4">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="w-full flex items-center justify-between px-4 py-2 rounded-full bg-purple-600/30 hover:bg-purple-600/50 transition-colors duration-300"
+            >
+              <div className="flex items-center gap-2">
+                <Image
+                  src="/moonlight-logo.png"
+                  alt="MoonLightRP Logo"
+                  width={24}
+                  height={24}
+                  className="h-6 w-6 object-contain"
+                />
+                <span className="font-bold text-purple-300">MoonLightRP</span>
+              </div>
+              <span className="text-purple-300">{mobileMenuOpen ? "✕" : "☰"}</span>
+            </button>
+
+            {mobileMenuOpen && (
+              <div className="mt-4 flex flex-col gap-3 text-sm font-medium">
+                <a
+                  href="fivem://connect/nl1.deluxhost.net:30121"
+                  className="px-4 py-2 rounded-lg bg-purple-600/20 hover:bg-purple-600/40 transition-colors duration-300 font-semibold text-purple-300"
+                >
+                  Připojit se
+                </a>
+                <a
+                  href="https://moonlightrp.gitbook.io/moonlight-rp-pravidla"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-lg hover:bg-purple-600/20 transition-colors duration-300"
+                >
+                  Pravidla
+                </a>
+                <a
+                  href="https://sakky.tebex.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-lg hover:bg-purple-600/20 transition-colors duration-300"
+                >
+                  Obchod
+                </a>
+                <Link
+                  href="/whitelist"
+                  className="px-4 py-2 rounded-lg hover:bg-purple-600/20 transition-colors duration-300"
+                >
+                  Whitelist
+                </Link>
+                <Link
+                  href="/team"
+                  className="px-4 py-2 rounded-lg hover:bg-purple-600/20 transition-colors duration-300"
+                >
+                  Tým
+                </Link>
+              </div>
+            )}
           </div>
         </div>
 
         {/* Hero Section */}
-        <section className="relative overflow-hidden px-4 py-20">
+        <section className="relative overflow-hidden px-4 py-20 pt-32 md:pt-20">
           <div className="mx-auto max-w-7xl">
             <div className="mb-8 flex justify-center">
               <div className="rounded-full bg-purple-500/20 px-4 py-2 text-sm text-purple-300">
@@ -132,7 +191,7 @@ export default function Home() {
               </div>
             </div>
 
-            <h1 className="mb-6 text-center text-6xl font-bold leading-tight">
+            <h1 className="mb-6 text-center text-4xl md:text-6xl font-bold leading-tight">
               Vítej na portálu <span className="text-purple-400">MoonLightRP</span>
             </h1>
 
@@ -141,13 +200,16 @@ export default function Home() {
               herní zážitek v prostředí, které jsme vytvořili s láskou a péčí.
             </p>
 
-            <div className="flex justify-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
               <a href="fivem://connect/nl1.deluxhost.net:30121">
-                <Button className="bg-purple-600 hover:bg-purple-700">Připojit se! →</Button>
+                <Button className="bg-purple-600 hover:bg-purple-700 w-full sm:w-auto">Připojit se! →</Button>
               </a>
               <a href="https://discord.gg/urvYf9EYHE" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" className="border-slate-600 text-white hover:bg-slate-800 bg-transparent">
-                  <Discord className="mr-2 h-4 w-4" />
+                <Button
+                  variant="outline"
+                  className="border-slate-600 text-white hover:bg-slate-800 bg-transparent w-full sm:w-auto"
+                >
+                  <MessageCircle className="mr-2 h-4 w-4" />
                   Discord
                 </Button>
               </a>
