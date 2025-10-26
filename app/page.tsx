@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { MessageCircle, Sparkles, Users, Zap, Play } from "lucide-react"
+import { MessageCircle, Sparkles, Users, Zap, ChevronUp, HelpCircle, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
@@ -11,6 +11,7 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [showPlayButton, setShowPlayButton] = useState(true)
+  const [showBackToTop, setShowBackToTop] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
 
   const scrollToTop = () => {
@@ -20,6 +21,7 @@ export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 100)
+      setShowBackToTop(window.scrollY > 500)
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
@@ -58,6 +60,16 @@ export default function Home() {
           ></div>
         ))}
       </div>
+
+      {showBackToTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 z-50 p-4 rounded-full bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-500 hover:to-purple-400 shadow-2xl shadow-purple-500/30 transition-all duration-300 hover:scale-110 animate-fade-in"
+          aria-label="Zpět nahoru"
+        >
+          <ChevronUp className="h-6 w-6 text-white" />
+        </button>
+      )}
 
       <div className="relative z-10">
         <div className="bg-gradient-to-r from-purple-600/20 via-purple-500/20 to-purple-600/20 backdrop-blur-md border-b border-purple-500/20 px-4 py-3 text-center text-sm">
@@ -193,16 +205,21 @@ export default function Home() {
         </div>
 
         <section className="relative overflow-hidden px-4 py-32 pt-40 md:pt-32 md:py-40">
-          <div className="mx-auto max-w-7xl">
+          <div className="absolute inset-0 animate-parallax pointer-events-none">
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
+          </div>
+
+          <div className="mx-auto max-w-7xl relative z-10">
             <div className="mb-8 flex justify-center animate-fade-in">
-              <div className="inline-flex items-center gap-2 rounded-full bg-purple-500/10 border border-purple-500/30 px-6 py-2 text-sm text-purple-300 backdrop-blur-sm">
+              <div className="inline-flex items-center gap-2 rounded-full bg-purple-500/10 border border-purple-500/30 px-6 py-2 text-sm text-purple-300 backdrop-blur-sm hover:bg-purple-500/20 transition-all duration-300 hover:scale-105">
                 <Sparkles className="h-4 w-4" />
                 <span className="font-medium">Největší cz/sk FiveM server</span>
               </div>
             </div>
 
             <h1 className="mb-8 text-center text-5xl md:text-7xl font-bold leading-tight tracking-tight">
-              Vítej na portálu{" "}
+              <span className="text-white">Vítej na portálu </span>
               <span className="bg-gradient-to-r from-purple-400 via-purple-300 to-purple-500 bg-clip-text text-transparent">
                 MoonLightRP
               </span>
@@ -215,14 +232,14 @@ export default function Home() {
 
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
               <a href="fivem://connect/nl1.deluxhost.net:30121">
-                <Button className="bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-500 hover:to-purple-400 text-white font-semibold px-8 py-6 text-lg rounded-xl shadow-2xl shadow-purple-500/30 w-full sm:w-auto transition-all duration-300 hover:scale-105">
+                <Button className="bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-500 hover:to-purple-400 text-white font-semibold px-8 py-6 text-lg rounded-xl shadow-2xl shadow-purple-500/30 w-full sm:w-auto transition-all duration-300 hover:scale-105 hover:shadow-purple-500/50 animate-pulse-glow">
                   Připojit se! →
                 </Button>
               </a>
               <a href="https://discord.gg/urvYf9EYHE" target="_blank" rel="noopener noreferrer">
                 <Button
                   variant="outline"
-                  className="border-2 border-slate-700 text-white hover:bg-slate-800/50 bg-slate-900/50 backdrop-blur-sm px-8 py-6 text-lg rounded-xl w-full sm:w-auto transition-all duration-300 hover:scale-105"
+                  className="border-2 border-slate-700 text-white hover:bg-slate-800/50 bg-slate-900/50 backdrop-blur-sm px-8 py-6 text-lg rounded-xl w-full sm:w-auto transition-all duration-300 hover:scale-105 hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-500/20"
                 >
                   <MessageCircle className="mr-2 h-5 w-5" />
                   Discord
@@ -231,87 +248,24 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-              <div className="text-center p-6 rounded-2xl bg-slate-900/50 border border-slate-800 backdrop-blur-sm">
+              <div className="text-center p-6 rounded-2xl bg-slate-900/50 border border-slate-800 backdrop-blur-sm hover:border-purple-500/30 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/10">
                 <div className="text-3xl md:text-4xl font-bold text-purple-400 mb-2">500+</div>
                 <div className="text-sm text-slate-400">Aktivních hráčů</div>
               </div>
-              <div className="text-center p-6 rounded-2xl bg-slate-900/50 border border-slate-800 backdrop-blur-sm">
+              <div className="text-center p-6 rounded-2xl bg-slate-900/50 border border-slate-800 backdrop-blur-sm hover:border-purple-500/30 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/10">
                 <div className="text-3xl md:text-4xl font-bold text-purple-400 mb-2">24/7</div>
                 <div className="text-sm text-slate-400">Online podpora</div>
               </div>
-              <div className="text-center p-6 rounded-2xl bg-slate-900/50 border border-slate-800 backdrop-blur-sm col-span-2 md:col-span-1">
+              <div className="text-center p-6 rounded-2xl bg-slate-900/50 border border-slate-800 backdrop-blur-sm col-span-2 md:col-span-1 hover:border-purple-500/30 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/10">
                 <div className="text-3xl md:text-4xl font-bold text-purple-400 mb-2">100%</div>
                 <div className="text-sm text-slate-400">Unikátní skripty</div>
               </div>
             </div>
           </div>
-
-          <div className="pointer-events-none absolute inset-0 overflow-hidden">
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
-          </div>
         </section>
 
         <section className="px-4 py-20">
           <div className="mx-auto max-w-6xl">
-            <div className="relative overflow-hidden rounded-3xl border border-purple-500/20 bg-gradient-to-br from-purple-900/30 via-slate-900/50 to-purple-800/30 p-8 md:p-12 backdrop-blur-sm shadow-2xl shadow-purple-500/10">
-              <div className="absolute right-6 top-6 rounded-full bg-slate-900/90 px-4 py-2 text-xs font-bold tracking-wider z-10 border border-purple-500/30">
-                MOONLIGHT RP
-              </div>
-
-              <div className="grid gap-12 md:grid-cols-2 items-center">
-                <div className="space-y-6">
-                  <div>
-                    <h2 className="text-5xl md:text-6xl font-bold mb-2 bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
-                      MOONLIGHT
-                    </h2>
-                    <p className="text-3xl md:text-4xl font-light text-purple-300 mb-2">ROLEPLAY</p>
-                    <p className="text-4xl md:text-5xl font-bold text-white">LAUNCH TEASER</p>
-                  </div>
-                  <p className="text-slate-300 text-lg leading-relaxed">
-                    Ponořte se do světa neomezených možností. Vytvořte si vlastní příběh a staňte se součástí naší
-                    komunity.
-                  </p>
-                </div>
-
-                <div className="flex items-center justify-center">
-                  <div className="relative w-full rounded-2xl overflow-hidden border border-purple-500/20 shadow-2xl group">
-                    <video
-                      ref={videoRef}
-                      className="w-full h-auto"
-                      controls
-                      playsInline
-                      preload="metadata"
-                      poster="/moonlight-roleplay-fivem-server-cinematic-dark-pur.jpg"
-                      onPause={handleVideoPause}
-                      onEnded={handleVideoPause}
-                    >
-                      <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/snaptik_7564819028762512662_hd-PROizEgFTwCFMeWkdjELs1LjyFojri.mp4" type="video/mp4" />
-                      Váš prohlížeč nepodporuje video tag.
-                    </video>
-
-                    {showPlayButton && (
-                      <div
-                        onClick={handlePlayVideo}
-                        className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm cursor-pointer transition-all duration-300 hover:bg-black/30"
-                      >
-                        <div className="flex flex-col items-center gap-4 animate-pulse">
-                          <div className="rounded-full bg-purple-600 p-6 shadow-2xl shadow-purple-500/50 hover:bg-purple-500 transition-all duration-300 hover:scale-110">
-                            <Play className="h-12 w-12 text-white fill-white" />
-                          </div>
-                          <p className="text-white font-semibold text-lg">Klikni pro přehrání</p>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="px-4 py-24">
-          <div className="mx-auto max-w-7xl">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-4">Jsme komunitní roleplay server</h2>
               <p className="text-xl text-slate-400 max-w-2xl mx-auto">
@@ -391,25 +345,219 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="px-4 py-24 bg-gradient-to-b from-transparent via-slate-950/30 to-transparent">
+          <div className="mx-auto max-w-4xl">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 mb-4">
+                <HelpCircle className="h-8 w-8 text-purple-400" />
+                <h2 className="text-4xl md:text-5xl font-bold">Často kladené otázky</h2>
+              </div>
+              <p className="text-xl text-slate-400">Odpovědi na nejčastější dotazy</p>
+            </div>
+
+            <div className="space-y-4">
+              <details className="group rounded-2xl border border-slate-800 bg-slate-900/50 backdrop-blur-sm p-6 hover:border-purple-500/30 transition-all duration-300">
+                <summary className="cursor-pointer text-lg font-semibold text-white flex items-center justify-between">
+                  Jak se mohu připojit na server?
+                  <span className="text-purple-400 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <p className="mt-4 text-slate-400 leading-relaxed">
+                  Stačí kliknout na tlačítko "Připojit se!" na hlavní stránce nebo použít IP adresu:
+                  nl1.deluxhost.net:30121 ve FiveM klientovi.
+                </p>
+              </details>
+
+              <details className="group rounded-2xl border border-slate-800 bg-slate-900/50 backdrop-blur-sm p-6 hover:border-purple-500/30 transition-all duration-300">
+                <summary className="cursor-pointer text-lg font-semibold text-white flex items-center justify-between">
+                  Potřebuji whitelist pro vstup?
+                  <span className="text-purple-400 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <p className="mt-4 text-slate-400 leading-relaxed">
+                  Ano, náš server vyžaduje whitelist. Můžete si podat žádost na stránce Whitelist. Proces schvalování
+                  obvykle trvá 24-48 hodin.
+                </p>
+              </details>
+
+              <details className="group rounded-2xl border border-slate-800 bg-slate-900/50 backdrop-blur-sm p-6 hover:border-purple-500/30 transition-all duration-300">
+                <summary className="cursor-pointer text-lg font-semibold text-white flex items-center justify-between">
+                  Jaké jsou pravidla serveru?
+                  <span className="text-purple-400 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <p className="mt-4 text-slate-400 leading-relaxed">
+                  Všechna pravidla najdete v naší GitBook dokumentaci. Klikněte na "Pravidla" v navigaci pro přístup k
+                  úplnému seznamu pravidel a pokynů.
+                </p>
+              </details>
+
+              <details className="group rounded-2xl border border-slate-800 bg-slate-900/50 backdrop-blur-sm p-6 hover:border-purple-500/30 transition-all duration-300">
+                <summary className="cursor-pointer text-lg font-semibold text-white flex items-center justify-between">
+                  Jak mohu získat VIP výhody?
+                  <span className="text-purple-400 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <p className="mt-4 text-slate-400 leading-relaxed">
+                  VIP balíčky a další výhody můžete zakoupit v našem obchodě na Tebex. Klikněte na "Obchod" v navigaci
+                  pro zobrazení dostupných možností.
+                </p>
+              </details>
+            </div>
+          </div>
+        </section>
+
+        <section className="px-4 py-24">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">Co říkají naši hráči</h2>
+              <p className="text-xl text-slate-400 max-w-2xl mx-auto">Přečtěte si zkušenosti členů naší komunity</p>
+            </div>
+
+            <div className="grid gap-8 md:grid-cols-3">
+              <div className="group rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/80 to-slate-900/40 p-8 backdrop-blur-sm hover:border-purple-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10 hover:-translate-y-2">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 text-purple-400 fill-purple-400" />
+                  ))}
+                </div>
+                <p className="text-slate-300 mb-6 leading-relaxed italic">
+                  "Nejlepší roleplay server na kterém jsem kdy hrál. Komunita je skvělá a admini jsou vždy nápomocní!"
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white font-bold">
+                    M
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white">Martin K.</p>
+                    <p className="text-sm text-slate-400">Hráč 6+ měsíců</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="group rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/80 to-slate-900/40 p-8 backdrop-blur-sm hover:border-purple-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10 hover:-translate-y-2">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 text-purple-400 fill-purple-400" />
+                  ))}
+                </div>
+                <p className="text-slate-300 mb-6 leading-relaxed italic">
+                  "Unikátní skripty a stabilní server. Eventy jsou vždy zábavné a odměny stojí za to!"
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white font-bold">
+                    J
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white">Jana S.</p>
+                    <p className="text-sm text-slate-400">Hráčka 1+ rok</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="group rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/80 to-slate-900/40 p-8 backdrop-blur-sm hover:border-purple-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10 hover:-translate-y-2">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 text-purple-400 fill-purple-400" />
+                  ))}
+                </div>
+                <p className="text-slate-300 mb-6 leading-relaxed italic">
+                  "Konečně server kde se dá normálně hrát roleplay. Doporučuji všem!"
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white font-bold">
+                    P
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white">Petr N.</p>
+                    <p className="text-sm text-slate-400">Hráč 3+ měsíce</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <footer className="border-t border-slate-800/50 px-4 py-16 bg-gradient-to-b from-transparent to-slate-950/50">
           <div className="mx-auto max-w-7xl">
-            <div className="text-center space-y-6">
-              <div className="flex justify-center mb-6">
-                <Image
-                  src="/moonlight-logo.png"
-                  alt="MoonLightRP Logo"
-                  width={64}
-                  height={64}
-                  className="h-16 w-16 object-contain opacity-80"
-                />
-              </div>
-              <div className="text-sm text-slate-400 space-y-2">
-                <p className="font-semibold text-slate-300">MoonLightRP © 2025 MoonLightRP. Všechna práva vyhrazena.</p>
-                <p className="max-w-2xl mx-auto">
-                  Tento projekt je vytvořen pro komunitu FiveM s cílem zajistit kvalitní roleplay zážitek.
+            <div className="grid md:grid-cols-4 gap-12 mb-12">
+              <div className="md:col-span-2">
+                <div className="flex items-center gap-3 mb-4">
+                  <Image
+                    src="/moonlight-logo.png"
+                    alt="MoonLightRP Logo"
+                    width={48}
+                    height={48}
+                    className="h-12 w-12 object-contain"
+                  />
+                  <span className="text-2xl font-bold gradient-text">MoonLightRP</span>
+                </div>
+                <p className="text-slate-400 leading-relaxed max-w-md">
+                  Největší český a slovenský FiveM roleplay server s aktivní komunitou 500+ hráčů. Připoj se a vytvoř si
+                  svůj vlastní příběh.
                 </p>
-                <p className="text-purple-400 font-medium pt-4">Designed & built by Vepexik_</p>
               </div>
+
+              <div>
+                <h3 className="font-semibold text-white mb-4">Rychlé odkazy</h3>
+                <ul className="space-y-2 text-slate-400">
+                  <li>
+                    <a
+                      href="fivem://connect/nl1.deluxhost.net:30121"
+                      className="hover:text-purple-400 transition-colors"
+                    >
+                      Připojit se
+                    </a>
+                  </li>
+                  <li>
+                    <Link href="/whitelist" className="hover:text-purple-400 transition-colors">
+                      Whitelist
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/team" className="hover:text-purple-400 transition-colors">
+                      Náš tým
+                    </Link>
+                  </li>
+                  <li>
+                    <a
+                      href="https://moonlightrp.gitbook.io/moonlight-rp-pravidla"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-purple-400 transition-colors"
+                    >
+                      Pravidla
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="font-semibold text-white mb-4">Komunita</h3>
+                <ul className="space-y-2 text-slate-400">
+                  <li>
+                    <a
+                      href="https://discord.gg/urvYf9EYHE"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-purple-400 transition-colors"
+                    >
+                      Discord
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://sakky.tebex.io/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-purple-400 transition-colors"
+                    >
+                      Obchod
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="border-t border-slate-800/50 pt-8 text-center space-y-2">
+              <p className="text-sm text-slate-400">© 2025 MoonLightRP. Všechna práva vyhrazena.</p>
+              <p className="text-sm text-purple-400 font-medium">Designed & built with ❤️ by Vepexik_</p>
             </div>
           </div>
         </footer>
