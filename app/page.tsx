@@ -314,6 +314,189 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="px-4 py-24 bg-gradient-to-b from-transparent via-slate-950/30 to-transparent">
+          <div className="mx-auto max-w-6xl">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">O nás</h2>
+              <p className="text-xl text-slate-400 max-w-2xl mx-auto">Poznejte náš server a naši komunitu</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6">
+                <div className="rounded-2xl border border-slate-800 bg-slate-900/50 backdrop-blur-sm p-6 hover:border-purple-500/30 transition-all duration-300">
+                  <h3 className="text-2xl font-bold text-white mb-3">Naše mise</h3>
+                  <p className="text-slate-400 leading-relaxed">
+                    MoonLightRP byl založen s cílem vytvořit nejlepší český a slovenský FiveM roleplay server. Naším
+                    posláním je poskytovat hráčům autentický a zábavný herní zážitek v přátelském a respektujícím
+                    prostředí.
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-slate-800 bg-slate-900/50 backdrop-blur-sm p-6 hover:border-purple-500/30 transition-all duration-300">
+                  <h3 className="text-2xl font-bold text-white mb-3">Naše hodnoty</h3>
+                  <ul className="space-y-2 text-slate-400">
+                    <li className="flex items-start gap-2">
+                      <span className="text-purple-400 mt-1">✓</span>
+                      <span>Respekt a fair play mezi všemi hráči</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-purple-400 mt-1">✓</span>
+                      <span>Kvalitní roleplay a autentické herní zážitky</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-purple-400 mt-1">✓</span>
+                      <span>Aktivní a vstřícná komunita</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-purple-400 mt-1">✓</span>
+                      <span>Neustálé vylepšování a inovace</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <div className="rounded-2xl border border-slate-800 bg-slate-900/50 backdrop-blur-sm p-6 hover:border-purple-500/30 transition-all duration-300">
+                  <h3 className="text-2xl font-bold text-white mb-3">Co nabízíme</h3>
+                  <ul className="space-y-3 text-slate-400">
+                    <li className="flex items-start gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Sparkles className="h-4 w-4 text-purple-400" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-white">Unikátní skripty</p>
+                        <p className="text-sm">Vlastní herní mechaniky vytvořené na míru</p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Users className="h-4 w-4 text-purple-400" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-white">Aktivní komunita</p>
+                        <p className="text-sm">500+ aktivních hráčů denně</p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Zap className="h-4 w-4 text-purple-400" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-white">Stabilní výkon</p>
+                        <p className="text-sm">Výkonné servery pro plynulý zážitek</p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <MessageCircle className="h-4 w-4 text-purple-400" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-white">24/7 Podpora</p>
+                        <p className="text-sm">Tým je vždy připraven pomoci</p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="px-4 py-24">
+          <div className="mx-auto max-w-4xl">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">Jak se připojit</h2>
+              <p className="text-xl text-slate-400 max-w-2xl mx-auto">Připojte se k nám ve 3 jednoduchých krocích</p>
+            </div>
+
+            <div className="space-y-6">
+              <div className="group relative rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/80 to-slate-900/40 p-8 backdrop-blur-sm hover:border-purple-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10">
+                <div className="absolute -left-4 top-8 w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-purple-500 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-purple-500/30">
+                  1
+                </div>
+                <div className="ml-8">
+                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">
+                    Stáhněte si FiveM
+                  </h3>
+                  <p className="text-slate-400 leading-relaxed mb-4">
+                    Pokud ještě nemáte FiveM klient, stáhněte si ho z oficiálních stránek{" "}
+                    <a
+                      href="https://fivem.net"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-purple-400 hover:text-purple-300 underline"
+                    >
+                      fivem.net
+                    </a>
+                    . Instalace je rychlá a jednoduchá.
+                  </p>
+                </div>
+              </div>
+
+              <div className="group relative rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/80 to-slate-900/40 p-8 backdrop-blur-sm hover:border-purple-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10">
+                <div className="absolute -left-4 top-8 w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-purple-500 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-purple-500/30">
+                  2
+                </div>
+                <div className="ml-8">
+                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">
+                    Požádejte o whitelist
+                  </h3>
+                  <p className="text-slate-400 leading-relaxed mb-4">
+                    Náš server vyžaduje whitelist pro zajištění kvalitního roleplay prostředí. Vyplňte žádost na naší{" "}
+                    <Link href="/whitelist" className="text-purple-400 hover:text-purple-300 underline">
+                      whitelist stránce
+                    </Link>
+                    . Schválení obvykle trvá 24-48 hodin.
+                  </p>
+                </div>
+              </div>
+
+              <div className="group relative rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/80 to-slate-900/40 p-8 backdrop-blur-sm hover:border-purple-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10">
+                <div className="absolute -left-4 top-8 w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-purple-500 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-purple-500/30">
+                  3
+                </div>
+                <div className="ml-8">
+                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">
+                    Připojte se a hrajte!
+                  </h3>
+                  <p className="text-slate-400 leading-relaxed mb-6">
+                    Po schválení whitelistu se můžete připojit pomocí IP adresy nebo kliknutím na tlačítko níže.
+                    Přečtěte si naše{" "}
+                    <a
+                      href="https://moonlightrp.gitbook.io/moonlight-rp-pravidla"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-purple-400 hover:text-purple-300 underline"
+                    >
+                      pravidla
+                    </a>{" "}
+                    a připojte se k naší komunitě na{" "}
+                    <a
+                      href="https://discord.gg/urvYf9EYHE"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-purple-400 hover:text-purple-300 underline"
+                    >
+                      Discordu
+                    </a>
+                    !
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <a href="fivem://connect/nl1.deluxhost.net:30121" className="flex-1">
+                      <Button className="w-full bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-500 hover:to-purple-400 text-white font-semibold px-6 py-6 text-lg rounded-xl shadow-2xl shadow-purple-500/30 transition-all duration-300 hover:scale-105">
+                        Připojit se nyní →
+                      </Button>
+                    </a>
+                    <div className="flex-1 rounded-xl bg-slate-800/50 border border-slate-700 p-4 flex items-center justify-center">
+                      <code className="text-purple-300 font-mono text-sm">nl1.deluxhost.net:30121</code>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="px-4 py-24 bg-gradient-to-b from-transparent via-purple-950/5 to-transparent">
           <div className="mx-auto max-w-7xl">
             <div className="text-center mb-16">
@@ -475,7 +658,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="px-4 py-24 bg-gradient-to-b from-transparent via-purple-950/5 to-transparent">
+        <section className="px-4 py-24 bg-gradient-to-b from-transparent to-slate-950/50">
           <div className="mx-auto max-w-4xl">
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold mb-4">Máte nápad nebo připomínku?</h2>
