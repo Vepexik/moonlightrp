@@ -4,35 +4,34 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.08 0 0);
+  --background: oklch(0.05 0 0);
   --foreground: oklch(0.98 0 0);
-  --card: oklch(0.12 0 0);
+  --card: oklch(0.08 0.02 280);
   --card-foreground: oklch(0.98 0 0);
   --popover: oklch(0.08 0 0);
   --popover-foreground: oklch(0.98 0 0);
-  /* Changed primary color from blue (250) to purple (280) */
-  --primary: oklch(0.5 0.2 280);
+  /* Enhanced purple primary with more saturation */
+  --primary: oklch(0.55 0.25 280);
   --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.15 0 0);
+  --secondary: oklch(0.12 0.02 280);
   --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.3 0 0);
-  --muted-foreground: oklch(0.7 0 0);
-  /* Changed accent color from blue (250) to purple (280) */
-  --accent: oklch(0.5 0.2 280);
+  --muted: oklch(0.25 0.01 280);
+  --muted-foreground: oklch(0.65 0.02 280);
+  /* Brighter purple accent for better visibility */
+  --accent: oklch(0.6 0.28 280);
   --accent-foreground: oklch(0.98 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.2 0 0);
-  --input: oklch(0.15 0 0);
-  /* Changed ring color from blue (250) to purple (280) */
-  --ring: oklch(0.5 0.2 280);
-  /* Changed chart colors to purple tones */
-  --chart-1: oklch(0.5 0.2 280);
-  --chart-2: oklch(0.6 0.118 280);
-  --chart-3: oklch(0.398 0.07 280);
-  --chart-4: oklch(0.828 0.189 280);
-  --chart-5: oklch(0.769 0.188 280);
-  --radius: 0.625rem;
+  --border: oklch(0.18 0.02 280);
+  --input: oklch(0.12 0.02 280);
+  --ring: oklch(0.6 0.28 280);
+  /* Updated chart colors with purple gradient */
+  --chart-1: oklch(0.6 0.28 280);
+  --chart-2: oklch(0.55 0.22 290);
+  --chart-3: oklch(0.5 0.18 270);
+  --chart-4: oklch(0.65 0.24 285);
+  --chart-5: oklch(0.58 0.26 275);
+  --radius: 0.75rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -44,34 +43,30 @@
 }
 
 .dark {
-  --background: oklch(0.08 0 0);
+  --background: oklch(0.05 0 0);
   --foreground: oklch(0.98 0 0);
-  --card: oklch(0.12 0 0);
+  --card: oklch(0.08 0.02 280);
   --card-foreground: oklch(0.98 0 0);
   --popover: oklch(0.08 0 0);
   --popover-foreground: oklch(0.98 0 0);
-  /* Changed primary color from blue (250) to purple (280) */
-  --primary: oklch(0.5 0.2 280);
+  --primary: oklch(0.55 0.25 280);
   --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.15 0 0);
+  --secondary: oklch(0.12 0.02 280);
   --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.3 0 0);
-  --muted-foreground: oklch(0.7 0 0);
-  /* Changed accent color from blue (250) to purple (280) */
-  --accent: oklch(0.5 0.2 280);
+  --muted: oklch(0.25 0.01 280);
+  --muted-foreground: oklch(0.65 0.02 280);
+  --accent: oklch(0.6 0.28 280);
   --accent-foreground: oklch(0.98 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.2 0 0);
-  --input: oklch(0.15 0 0);
-  /* Changed ring color from blue (250) to purple (280) */
-  --ring: oklch(0.5 0.2 280);
-  /* Changed chart colors to purple tones */
-  --chart-1: oklch(0.5 0.2 280);
-  --chart-2: oklch(0.6 0.118 280);
-  --chart-3: oklch(0.398 0.07 280);
-  --chart-4: oklch(0.828 0.189 280);
-  --chart-5: oklch(0.769 0.188 280);
+  --border: oklch(0.18 0.02 280);
+  --input: oklch(0.12 0.02 280);
+  --ring: oklch(0.6 0.28 280);
+  --chart-1: oklch(0.6 0.28 280);
+  --chart-2: oklch(0.55 0.22 290);
+  --chart-3: oklch(0.5 0.18 270);
+  --chart-4: oklch(0.65 0.24 285);
+  --chart-5: oklch(0.58 0.26 275);
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.488 0.243 280);
@@ -130,14 +125,16 @@
   }
 }
 
-/* Animated starfield background */
+/* Enhanced starfield with better visibility */
 @keyframes twinkle {
   0%,
   100% {
-    opacity: 1;
+    opacity: 0.3;
+    transform: scale(1);
   }
   50% {
     opacity: 1;
+    transform: scale(1.2);
   }
 }
 
@@ -151,30 +148,65 @@
   }
 }
 
-/* Added smooth slide-in animation for oval bubble */
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: scale(0.8);
+    transform: translateX(-50%) translateY(-20px);
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: translateX(-50%) translateY(0);
   }
 }
 
+@keyframes parallax {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-50px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.8);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Added glow effect for stars */
 .star {
   position: absolute;
   width: 2px;
   height: 2px;
   background-color: #ffffff;
-  /* Ensure stars are pure white */
   border-radius: 50%;
   animation: twinkle 3s infinite;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
 }
 
 .star:nth-child(odd) {
   animation: twinkle 3s infinite, float 6s infinite;
+}
+
+.star:nth-child(3n) {
+  width: 3px;
+  height: 3px;
+  background: linear-gradient(90deg, #fff, transparent);
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.8);
 }
 
 .starfield {
@@ -187,9 +219,34 @@
   z-index: 0;
 }
 
-/* Custom animation for bubble appearance */
 @layer utilities {
   .animate-slideIn {
     animation: slideIn 0.5s ease-out;
   }
+
+  .animate-parallax {
+    animation: parallax 20s ease-in-out infinite alternate;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.3), transparent);
+    background-size: 1000px 100%;
+    animation: shimmer 3s infinite;
+  }
+}
+
+/* Added gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, oklch(0.6 0.28 280), oklch(0.7 0.22 290));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+html {
+  scroll-behavior: smooth;
 }
