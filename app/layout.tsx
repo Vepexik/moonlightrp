@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { CartProvider } from "./providers"
+import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
@@ -82,14 +83,16 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="cs">
+    <html lang="cs" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/moonlight-logo.png" />
         <meta name="theme-color" content="#a855f7" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body className={`font-sans antialiased`}>
-        <CartProvider>{children}</CartProvider>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          <CartProvider>{children}</CartProvider>
+        </ThemeProvider>
       </body>
     </html>
   )

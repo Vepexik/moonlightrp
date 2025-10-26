@@ -10,14 +10,12 @@
   --card-foreground: oklch(0.98 0 0);
   --popover: oklch(0.08 0 0);
   --popover-foreground: oklch(0.98 0 0);
-  /* Enhanced purple primary with more saturation */
   --primary: oklch(0.55 0.25 280);
   --primary-foreground: oklch(0.98 0 0);
   --secondary: oklch(0.12 0.02 280);
   --secondary-foreground: oklch(0.98 0 0);
   --muted: oklch(0.25 0.01 280);
   --muted-foreground: oklch(0.65 0.02 280);
-  /* Brighter purple accent for better visibility */
   --accent: oklch(0.6 0.28 280);
   --accent-foreground: oklch(0.98 0 0);
   --destructive: oklch(0.577 0.245 27.325);
@@ -25,7 +23,6 @@
   --border: oklch(0.18 0.02 280);
   --input: oklch(0.12 0.02 280);
   --ring: oklch(0.6 0.28 280);
-  /* Updated chart colors with purple gradient */
   --chart-1: oklch(0.6 0.28 280);
   --chart-2: oklch(0.55 0.22 290);
   --chart-3: oklch(0.5 0.18 270);
@@ -40,6 +37,34 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+}
+
+/* Added light mode color scheme */
+.light {
+  --background: oklch(0.98 0 0);
+  --foreground: oklch(0.1 0 0);
+  --card: oklch(0.95 0.01 280);
+  --card-foreground: oklch(0.1 0 0);
+  --popover: oklch(0.98 0 0);
+  --popover-foreground: oklch(0.1 0 0);
+  --primary: oklch(0.5 0.25 280);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.92 0.01 280);
+  --secondary-foreground: oklch(0.1 0 0);
+  --muted: oklch(0.88 0.01 280);
+  --muted-foreground: oklch(0.45 0.02 280);
+  --accent: oklch(0.55 0.25 280);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.85 0.01 280);
+  --input: oklch(0.92 0.01 280);
+  --ring: oklch(0.55 0.25 280);
+  --chart-1: oklch(0.55 0.25 280);
+  --chart-2: oklch(0.5 0.22 290);
+  --chart-3: oklch(0.45 0.18 270);
+  --chart-4: oklch(0.6 0.24 285);
+  --chart-5: oklch(0.52 0.26 275);
 }
 
 .dark {
@@ -125,7 +150,17 @@
   }
 }
 
-/* Enhanced starfield with better visibility */
+/* Enhanced animations with dynamic gradient background */
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 @keyframes twinkle {
   0%,
   100% {
@@ -187,7 +222,6 @@
   }
 }
 
-/* Added fade-in animation for back to top button */
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -199,7 +233,6 @@
   }
 }
 
-/* Added glow effect for stars */
 .star {
   position: absolute;
   width: 2px;
@@ -250,13 +283,18 @@
     animation: shimmer 3s infinite;
   }
 
-  /* Added fade-in utility class */
   .animate-fade-in {
     animation: fade-in 0.3s ease-out;
   }
+
+  /* Added dynamic gradient animation */
+  .animate-gradient {
+    background: linear-gradient(270deg, #a855f7, #8b5cf6, #7c3aed, #a855f7);
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
 }
 
-/* Added gradient text utility */
 .gradient-text {
   background: linear-gradient(135deg, oklch(0.6 0.28 280), oklch(0.7 0.22 290));
   -webkit-background-clip: text;
