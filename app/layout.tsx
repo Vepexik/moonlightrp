@@ -21,6 +21,10 @@ export const metadata: Metadata = {
     "slovenský FiveM server",
     "roleplay server",
     "GTA V roleplay",
+    "FiveM CZ",
+    "FiveM SK",
+    "roleplay komunita",
+    "GTA online roleplay",
   ],
   authors: [{ name: "MoonLightRP Team" }],
   creator: "Vepexik_",
@@ -57,6 +61,21 @@ export const metadata: Metadata = {
   generator: "v0.app",
 }
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "MoonLightRP",
+  description: "Největší český a slovenský FiveM roleplay server",
+  url: "https://moonlightrp.cz",
+  logo: "https://moonlightrp.cz/moonlight-logo.png",
+  sameAs: ["https://discord.gg/urvYf9EYHE"],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "Customer Support",
+    availableLanguage: ["Czech", "Slovak"],
+  },
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -67,6 +86,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/moonlight-logo.png" />
         <meta name="theme-color" content="#a855f7" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body className={`font-sans antialiased`}>
         <CartProvider>{children}</CartProvider>

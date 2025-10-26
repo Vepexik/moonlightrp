@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
 import ActivityCard from "@/components/activity-card"
+import FeedbackForm from "@/components/feedback-form"
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -471,6 +472,19 @@ export default function Home() {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="px-4 py-24 bg-gradient-to-b from-transparent via-purple-950/5 to-transparent">
+          <div className="mx-auto max-w-4xl">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">Máte nápad nebo připomínku?</h2>
+              <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+                Vaše zpětná vazba nám pomáhá vytvářet lepší herní zážitek pro všechny
+              </p>
+            </div>
+
+            <FeedbackForm />
           </div>
         </section>
 
